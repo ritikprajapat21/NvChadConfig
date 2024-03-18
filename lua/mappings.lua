@@ -50,7 +50,9 @@ autocmd("FileType", {
 
 autocmd("TextYankPost", {
   desc = "Highlight on yank",
-  command = "silent! lua vim.highlight.on_yank({higroup='YankVisual', timeout=200})",
+  callback = function()
+    vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
+  end,
   group = augroup("YankHighlight", { clear = true }),
 })
 
