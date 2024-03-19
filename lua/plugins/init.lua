@@ -49,7 +49,8 @@ return {
 
   {
     "nvimtools/none-ls.nvim",
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    -- event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    event = "VeryLazy",
     config = function()
       require "configs.none"
     end,
@@ -57,22 +58,39 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      highlight = { enable = true },
-      ensure_installed = {
-        "bash",
-        "html",
-        "css",
-        "javascript",
-        "lua",
-        "markdown",
-        "python",
-        "query",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-      },
+    -- opts = {
+    --   highlight = { enable = true },
+    --   ensure_installed = {
+    --     "bash",
+    --     "html",
+    --     "css",
+    --     "javascript",
+    --     "lua",
+    --     "markdown",
+    --     "python",
+    --     "query",
+    --     "tsx",
+    --     "typescript",
+    --     "yaml",
+    --   },
+    -- },
+    opts = function()
+      require "nvchad.configs.nvimtree"
+      require "configs.nvimtree"
+    end,
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "html",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
     },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
   },
 }
