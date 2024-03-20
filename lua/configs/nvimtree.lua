@@ -1,7 +1,7 @@
 local options = {
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_root = true,
   },
   highlight = { enable = true },
   ensure_installed = {
