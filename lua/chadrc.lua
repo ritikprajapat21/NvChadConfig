@@ -6,11 +6,20 @@ local M = {}
 
 M.ui = {
 	theme = "onedark",
+  transparency = true,
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+	hl_override = {
+		Comment = { italic = true },
+		["@comment"] = { italic = true },
+	},
+  
+ statusline = {
+    modules = {
+      cursor = function() 
+      return "☰Ln %l:Col %c"
+      end,
+    },
+  },
 }
 
 return M
