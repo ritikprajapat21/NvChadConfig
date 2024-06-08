@@ -40,7 +40,6 @@ return {
         enable = true,
       },
       ensure_installed = {
-        "help",
         "json",
         "javascript",
         "typescript",
