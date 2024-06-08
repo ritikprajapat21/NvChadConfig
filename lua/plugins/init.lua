@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -24,11 +24,12 @@ return {
         "typescript-language-server",
         "stylua",
         "html-lsp",
-        "css-lsp" ,
+        "css-lsp",
         "prettier",
         "black", -- python formatter
         "pylint",
-        "eslint_d",  		},
+        "eslint_d",
+      },
     },
   },
 
@@ -39,6 +40,7 @@ return {
         enable = true,
       },
       ensure_installed = {
+        "help",
         "json",
         "javascript",
         "typescript",
@@ -53,7 +55,6 @@ return {
         "vim",
         "dockerfile",
         "gitignore",
-        "query",
       },
       incremental_selection = {
         enable = true,
@@ -69,12 +70,12 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
-    opts = function ()
-      return require("configs.nvimtree")
-    end
+    opts = function()
+      return require "configs.nvimtree"
+    end,
   },
 
-    {
+  {
     "nvimtools/none-ls.nvim",
     event = "VeryLazy",
     config = function()

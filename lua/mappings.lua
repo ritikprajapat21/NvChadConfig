@@ -22,4 +22,3 @@ autocmd("TextYankPost", {
   end,
   group = augroup("YankHighlight", { clear = true }),
 })
-
