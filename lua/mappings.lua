@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -12,6 +10,12 @@ map({ "n", "i", "v" }, "<C-s>", "<ESC><cmd> w <cr>")
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toogle Nvim Tree" })
 
 map("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+
+-- TIP: Disable arrow keys in normal mode
+map("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+map("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 local builtin = require "telescope.builtin"
 map("n", "<leader>fh", builtin.help_tags, { desc = "[S]earch [H]elp" })

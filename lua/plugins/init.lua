@@ -1,11 +1,11 @@
 return {
-  {
-    "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
-    config = function()
-      require "configs.conform"
-    end,
-  },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   event = "BufWritePre", -- uncomment for format on save
+  --   config = function()
+  --     require "configs.conform"
+  --   end,
+  -- },
 
   {
     "neovim/nvim-lspconfig",
@@ -36,6 +36,12 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+      },
       autotag = {
         enable = true,
       },
@@ -79,6 +85,14 @@ return {
     event = "VeryLazy",
     config = function()
       require "configs.none"
+    end,
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    event = "BufReadPre",
+    config = function()
+      require "configs.autotag"
     end,
   },
 }
