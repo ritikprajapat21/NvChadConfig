@@ -6,12 +6,13 @@
 local M = {}
 
 M.base46 = {
-  theme = "ayu_dark",
+  theme = "tokyodark",
   transparency = true,
 
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+    codeium = { fg = "orange" },
     CursorLine = {
       bg = "one_bg",
     },
@@ -25,7 +26,6 @@ M.ui = {
 
   cmp = {
     icons_left = true,
-    style = "default",
   },
 
   statusline = {
