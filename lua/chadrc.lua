@@ -23,6 +23,11 @@ M.ui = {
     style = "bordered",
   },
 
+  cmp = {
+    icons_left = true,
+    style = "default",
+  },
+
   statusline = {
     modules = {
       cursor = function()
@@ -33,7 +38,22 @@ M.ui = {
 }
 
 M.nvdash = {
-  load_on_startup = true,
+  load_on_startup = false,
+  header = {
+    "                            ",
+    "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
+    "   ▄▀███▄     ▄██ █████▀    ",
+    "   ██▄▀███▄   ███           ",
+    "   ███  ▀███▄ ███           ",
+    "   ███    ▀██ ███           ",
+    "   ███      ▀ ███           ",
+    "   ▀██ █████▄▀█▀▄██████▄    ",
+    "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
+    "                            ",
+    "     Powered By  eovim    ",
+    "  Edited by Ritik Prajapat  ",
+    "                            ",
+  },
 }
 
 M.mason = {
