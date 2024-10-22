@@ -16,6 +16,7 @@ local opts = {
   },
 
   -- Not required ?
+<<<<<<< HEAD
   -- on_attach = function(client, bufnr)
   --   if client.supports_method "textDocument/formatting" then
   --     vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
@@ -28,6 +29,20 @@ local opts = {
   --     })
   --   end
   -- end,
+=======
+  on_attach = function(client, bufnr)
+    if client.supports_method "textDocument/formatting" then
+      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format { bufnr = bufnr, async = false, timeout_ms = 2000 }
+        end,
+      })
+    end
+  end,
+>>>>>>> ad009c1 (New config)
 }
 
 null_ls.setup(opts)

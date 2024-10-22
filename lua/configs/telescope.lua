@@ -184,6 +184,10 @@ return {
     local fb_actions = require("telescope").extensions.file_browser.actions
 
     opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+<<<<<<< HEAD
+=======
+      path_display = { "smart" },
+>>>>>>> ad009c1 (New config)
       wrap_results = true,
       layout_strategy = "horizontal",
       layout_config = { prompt_position = "top" },
@@ -193,7 +197,11 @@ return {
         n = {},
       },
       -- To view image
+<<<<<<< HEAD
       -- preview = {
+=======
+      -- preview =
+>>>>>>> ad009c1 (New config)
       --   mime_hook = function(filepath, bufnr, opts)
       --     local is_image = function(filepath)
       --       local image_extensions = { "png", "jpg" } -- Supported image formats
