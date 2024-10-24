@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "tailwindcss", "angularls", "ts_ls" }
+local servers = { "html", "cssls", "tailwindcss", "ts_ls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -43,6 +43,45 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+local cwd = vim.fn.getcwd()
+local project_library_path = cwd .. "/node_modules"
+local cmd = { "ngserver", "--stdio", "--tsProbeLocations", project_library_path, "--ngProbeLocations",
+  project_library_path }
+
+lspconfig.angularls.setup({
+  cmd = cmd,
+  on_new_config = function(new_config, _)
+    new_config.cmd = cmd
+  end,
+  on_attach = function(client, bufnr)
+    nvlsp.on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd("CursorHold", {
+      buffer = bufnr,
+      callback = function()
+        local opts = {
+          focusable = false,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          border = "rounded",
+          source = "always",
+          prefix = " ",
+          scope = "cursor",
+        }
+        vim.diagnostic.open_float(opts)
+      end,
+    })
+    -- For goto reference
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = "Find all the references" })
+    -- For formatting
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format { async = false }
+      end,
+    })
+  end,
+  capabilities = nvlsp.capabilities,
+})
+
 lspconfig.lua_ls.setup {
   on_attach = function(client, bufnr)
     nvlsp.on_attach(client, bufnr)
@@ -77,28 +116,13 @@ lspconfig.lua_ls.setup {
         library = {
           [vim.fn.expand "$VIMRUNTIME/lua"] = true,
           [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
         },
       },
     },
   },
 }
-
--- lspconfig.biome.setup {
---   on_attach = function(client, bufnr)
---     nvlsp.on_attach(client, bufnr)
---     vim.api.nvim_create_autocmd("BufWritePre", {
---       buffer = bufnr,
---       callback = function()
---         vim.lsp.buf.format { async = false }
---       end,
---     })
---   end,
---   filetypes = { "astro", "css", "graphql", "javascript", "javascriptreact", "json", "jsonc", "svelte", "typescript", "typescript.tsx", "typescriptreact", "vue" },
---   capabilities = nvlsp.capabilities,
---   on_init = function()
---     print('Running Biome LSP')
---   end
--- }
 
 vim.diagnostic.config({
   float = {
