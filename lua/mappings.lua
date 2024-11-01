@@ -2,7 +2,7 @@ require "nvchad.mappings"
 
 local map = vim.keymap
 
-map.set("i", "jk", "<ESC>")
+map.set({ "n", "i" }, "jk", "<ESC><cmd>noh<cr>", { desc = "Escape and clear highlight" })
 map.set("n", "x", '"_x')
 
 -- Increment/Decrement
@@ -12,8 +12,6 @@ map.set("n", "-", "<C-x>")
 -- Split window
 map.set("n", "<leader>s", "<C-w>s")
 map.set("n", "<leader>v", "<C-w>v")
-
-map.set("i", "jk", "<ESC>")
 
 map.set({ "n", "v", "i" }, "<C-c>", '"+y')
 map.set({ "n", "i", "v" }, "<C-s>", "<ESC><cmd> w <cr>")
@@ -28,9 +26,9 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("TextYankPost", {
-    desc = "Highlight on yank",
-    callback = function()
-        vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
-    end,
-    group = augroup("YankHighlight", { clear = true }),
+  desc = "Highlight on yank",
+  callback = function()
+    vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
+  end,
+  group = augroup("YankHighlight", { clear = true }),
 })
