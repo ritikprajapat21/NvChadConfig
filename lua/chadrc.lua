@@ -31,7 +31,7 @@ M.ui = {
   statusline = {
     modules = {
       cursor = function()
-        return "Ln %l|Col %c " .. vim.api.nvim_call_function("codeium#GetStatusString", {})
+        return "Ln %l|Col %c "
       end,
     },
   },

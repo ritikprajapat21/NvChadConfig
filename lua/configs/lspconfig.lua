@@ -59,7 +59,7 @@ lspconfig.angularls.setup({
       buffer = bufnr,
       callback = function()
         local opts = {
-          focusable = false,
+          focusable = true,
           close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
           border = "rounded",
           source = "always",
@@ -89,7 +89,7 @@ lspconfig.lua_ls.setup {
       buffer = bufnr,
       callback = function()
         local opts = {
-          focusable = false,
+          focusable = true,
           close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
           border = "rounded",
           source = "always",
@@ -126,7 +126,7 @@ lspconfig.lua_ls.setup {
 
 vim.diagnostic.config({
   float = {
-    focusable = false,
+    focusable = true,
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
     border = "rounded",
     source = true,
