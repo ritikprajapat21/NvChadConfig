@@ -97,32 +97,11 @@ return {
     end,
   },
 
-  -- {
-  --   "Exafunction/codeium.nvim",
-  --   event = "BufEnter",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "hrsh7th/nvim-cmp",
-  --   },
-  --   config = function()
-  --     -- Change '<C-g>' here to any keycode you like.
-  --     vim.keymap.set("i", "<C-g>", function()
-  --       return vim.fn["codeium#Accept"]()
-  --     end, { desc = "Codeium Accept", expr = true, silent = true })
-  --     vim.keymap.set("i", "<C-n>", function()
-  --       return vim.fn["codeium#CycleCompletions"](1)
-  --     end, { expr = true, silent = true, desc = "Codeium Cycle Completions" })
-  --     vim.keymap.set("i", "<C-p>", function()
-  --       return vim.fn["codeium#CycleCompletions"](-1)
-  --     end, { expr = true, silent = true, desc = "Codeium previous completion" })
-  --     vim.keymap.set("i", "<C-x>", function()
-  --       return vim.fn["codeium#Clear"]()
-  --     end, { expr = true, silent = true, desc = "Codeium Clear" })
-  --   end,
-  -- },
-
-  require("configs.codeium"),
+  require("configs.code_assist"),
   require "configs.nvim-cmp",
   require "configs.lazygit",
   require "configs.telescope",
+
+  require "configs.avante",
+
 }
