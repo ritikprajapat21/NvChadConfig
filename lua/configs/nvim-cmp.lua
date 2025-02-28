@@ -79,15 +79,15 @@ return {
       "supermaven-inc/supermaven-nvim",
       -- commit = "df3ecf7",
       event = "BufReadPost",
-      -- opts = {
-      --   disable_keymaps = false,
-      --   disable_inline_completion = false,
-      --   -- keymaps = {
-      --   --   accept_suggestion = "<C-;>",
-      --   --   clear_suggestion = "<Nop>",
-      --   --   accept_word = "<C-y>",
-      --   -- },
-      -- },
+      opts = {
+        --   disable_keymaps = false,
+        --   disable_inline_completion = false,
+        keymaps = {
+          accept_suggestion = "<C-g>",
+          clear_suggestion = "<C-;>",
+          accept_word = "<C-y>",
+        },
+      },
     },
     {
       "L3MON4D3/LuaSnip",

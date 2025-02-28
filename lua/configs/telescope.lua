@@ -104,7 +104,8 @@ return {
           -- additional_args = { "--hidden" },
         }
       end,
-      desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+      desc =
+      "Search for a string in your current working directory and get results live as you type, respects .gitignore",
     },
     {
       ";;",
@@ -271,5 +272,7 @@ return {
     telescope.setup(opts)
     require("telescope").load_extension "fzf"
     require("telescope").load_extension "file_browser"
+    require('telescope').extensions.flutter.commands()
+    require("telescope").load_extension("flutter")
   end,
 }

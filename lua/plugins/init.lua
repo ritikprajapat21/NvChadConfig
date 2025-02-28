@@ -102,6 +102,23 @@ return {
   require "configs.lazygit",
   require "configs.telescope",
 
-  require "configs.avante",
+  -- require "configs.avante",
+
+  {
+    'nvim-flutter/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = function()
+      require('flutter-tools').setup({
+        flutter_path = "~/development/flutter",
+        lsp = {
+          color = { enabled = true },
+        }
+      })
+    end,
+  },
 
 }
