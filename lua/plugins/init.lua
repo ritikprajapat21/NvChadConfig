@@ -64,13 +64,16 @@ return {
     end,
   },
 
-  {
-    "nvimtools/none-ls.nvim",
-    event = "VeryLazy",
-    config = function()
-      require "configs.none"
-    end,
-  },
+  -- {
+  --   'nvimtools/none-ls.nvim',
+  --   dependencies = {
+  --     'nvimtools/none-ls-extras.nvim',
+  --     'jayp0521/mason-null-ls.nvim', -- ensure dependencies are installed
+  --   },
+  --   config = function()
+  --     require "configs.none"
+  --   end,
+  -- },
 
   -- for brackets
   {
@@ -98,10 +101,11 @@ return {
     end,
   },
 
-  require("configs.code_assist"),
+  require "configs.code_assist",
   require "configs.nvim-cmp",
   require "configs.lazygit",
   require "configs.telescope",
+  require "configs.none",
 
   -- require "configs.avante",
 
@@ -110,7 +114,7 @@ return {
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
+      'stevearc/dressing.nvim',     -- optional for vim.ui.select
     },
     config = function()
       require('flutter-tools').setup({
