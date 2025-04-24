@@ -63,9 +63,9 @@ M.mason = {
     "typescript-language-server",
     "html-lsp",
     "css-lsp",
-    "black", -- python formatter
     "biome",
-    "pylint",
+    "pyright",
+    -- "python-lsp-server",
   },
 }
 
